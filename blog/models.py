@@ -1,3 +1,28 @@
+import datetime
+from urllib import request
+
+from django.contrib.auth.models import User
 from django.db import models
 
-# Create your models here.
+
+class Post(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts')
+    title = models.CharField(max_length=20)
+    text = models.TextField(max_length=140, blank=True)
+    create_time = models.DateTimeField(default=datetime.datetime.now)
+
+    def __str__(self):
+        return self.title
+
+
+
+
+
+
+
+
+
+
+
+
+
